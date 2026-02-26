@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\DataScamblerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScamblerController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\JobPostController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,16 +17,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/scambles', [ScamblerController::class, 'index'])->name('scambles.index');
+    Route::get('/scambles/create', [ScamblerController::class, 'create'])->name('scambles.create');
+    Route::post('/scambles', [ScamblerController::class, 'store'])->name('scambles.store');
 
-    Route::get('/create-job',[JobPostCOntroller::class, 'create'])->name('job-post');
+    Route::get('/scambles-data', [DataScamblerController::class, 'index'])->name('data.scambles.index');
+    Route::get('/scambles-data/create', [DataScamblerController::class, 'create'])->name('data.scambles.create');
+    Route::post('/scambles-data-post', [DataScamblerController::class, 'store'])->name('data.scambles.store');
 
-     Route::get('/all-jobs',[JobPostCOntroller::class, 'index'])->name('job-posts.index');
+     Route::get('/scambles-text', [DataScamblerController::class, 'scambleDataShow'])->name('data.scambles.show');
 
-    Route::post('/job-post',[JobPostCOntroller::class, 'store'])->name('job-posts.store');
 
-    Route::get('/job-edit/{id}',[JobPostCOntroller::class, 'edit'])->name('job-posts.edit');
-
-    Route::get('/job-delete',[JobPostCOntroller::class, 'destroy'])->name('job-posts.destroy');
+    
 });
 
 require __DIR__.'/auth.php';

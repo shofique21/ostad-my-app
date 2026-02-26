@@ -16,6 +16,23 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <!-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('scambles.index')" :active="request()->routeIs('scambles.index')">
+                        {{ __('scamble') }}
+                    </x-nav-link>
+                </div> -->
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('data.scambles.index')" :active="request()->routeIs('data.scambles.index')">
+                        {{ __('Scamble Data') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('data.scambles.show')" :active="request()->routeIs('data.scambles.show')">
+                        {{ __('API Data show') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
