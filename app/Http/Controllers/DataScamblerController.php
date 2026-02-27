@@ -68,6 +68,7 @@ class DataScamblerController extends Controller
 
         return redirect()->route('data.scambles.index')
             ->with('success', 'Data Scrambled Successfully!');
+            
     }
 
     private function hashScramble(string $data): string
