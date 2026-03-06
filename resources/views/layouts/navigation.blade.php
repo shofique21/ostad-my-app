@@ -16,6 +16,20 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                @if(Auth::user()->isAdmin())
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                        {{ __('Category') }}
+                    </x-nav-link>
+                </div>
+                @endif
+                @if(Auth::user()->isUser())
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('vehicles.index')" :active="request()->routeIs('vehicles.*')">
+                        {{ __('My Vehicles') }}
+                    </x-nav-link>
+                </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
@@ -70,6 +84,16 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if(Auth::user()->isAdmin())
+            <x-responsive-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                {{ __('Category') }}
+            </x-responsive-nav-link>
+            @endif
+            @if(Auth::user()->isUser())
+            <x-responsive-nav-link :href="route('vehicles.index')" :active="request()->routeIs('vehicles.*')">
+                {{ __('My Vehicles') }}
+            </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
