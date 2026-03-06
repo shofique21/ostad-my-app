@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobPostController;
-
+use App\Http\Controllers\AlbumController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -17,15 +17,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/create-job',[JobPostCOntroller::class, 'create'])->name('job-post');
-
-     Route::get('/all-jobs',[JobPostCOntroller::class, 'index'])->name('job-posts.index');
-
-    Route::post('/job-post',[JobPostCOntroller::class, 'store'])->name('job-posts.store');
-
-    Route::get('/job-edit/{id}',[JobPostCOntroller::class, 'edit'])->name('job-posts.edit');
-
-    Route::get('/job-delete',[JobPostCOntroller::class, 'destroy'])->name('job-posts.destroy');
+    Route::get('/albums',[AlbumController::class,'index'])->name('albums.index');
+    Route::get('/create-album',[AlbumController::class,'create'])->name('albums.create');
+    Route::post('/store',[AlbumController::class,'store'])->name('albums.store');
+    Route::get('/edit-album',[AlbumController::class,'edit'])->name('albums.edit');
+    Route::delete('/delete-album',[AlbumController::class,'destroy'])->name('albums.destroy');
 });
 
 require __DIR__.'/auth.php';
